@@ -1,0 +1,79 @@
+
+ @import "bootstrap";
+
+ .cred{
+    border:1px red solid;
+}
+
+#search:focus {
+    outline: none;
+    box-shadow:none;
+}
+
+.main-bg{
+    background-color: #EFEFEF;
+}
+
+.cred{
+    border:1px red solid;
+}
+
+#search:focus {
+    outline: none;
+    box-shadow:none;
+}
+
+.supports {
+  display: flex;
+  flex-wrap: nowrap;
+  display: -webkit-flex;
+  display: -moz-flex;
+  -webkit-flex-wrap: nowrap;
+  -moz-flex-wrap: nowrap;
+  height: 100vh;
+  color: #fff;
+}
+
+.scope{
+  overflow: hidden;
+  width: 33.3333%;
+  height: 100%;
+  background: olive linear-gradient(180deg, #9700E1 0%, #426BFF 100%);
+  position: relative;
+  z-index: 0;
+ }
+
+ .atitle{
+     font-size: 0.86em;
+ }
+
+ .content-right{
+     background-color: #F8F8F8;
+ }
+
+ input.phone:focus, input.code:focus {
+    outline: none;
+    box-shadow:none;
+}
+
+body, .login-input{
+    background: #F8F8F8;
+}
+
+#smsbtn{
+    cursor: pointer;
+}
+
+#file{
+  opacity: 0;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%!important;
+  position: absolute;
+  left: 10.6em;
+  cursor: pointer;
+}
+
+#preview{
+  background-color: #DADADA;
+}

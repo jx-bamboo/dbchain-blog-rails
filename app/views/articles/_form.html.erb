@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="nav align-items-center text-center flex-column justify-content-center">
+    <div class="col-sm-12 col-lg-8">
+      <%= form_with(model: article, class: "form form-control border-0 pt-5 pb-4 px-4 shadow-lg" ) do |form| %>
+        <% if article.errors.any? %>
+          <div class="input-group mb-3">
+            <div id="error_explanation">
+              <h2>
+                <%= pluralize(article.errors.count, "error" ) %> prohibited this article from being saved:
+              </h2>
+
+              <ul>
+                <% article.errors.each do |error| %>
+                  <li>
+                    <%= error.full_message %>
+                  </li>
+                  <% end %>
+              </ul>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="input-group mb-3">
+          <%= form.text_field :title, class: "form-control form-control-lg login-input border-0 main-bg", placeholder: "标题", required: "required" %>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= form.text_area :content, rows: "10", class: "form-control form-control-lg code login-input border-0 main-bg", placeholder: "这里是博客内容", required: "required" %>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= form.submit "新建博客" , class: "btn btn-lg btn-primary form-control shadow" %>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= link_to '返回', articles_path, class: "btn btn-lg btn-outline-primary form-control" %>
+        </div>
+
+
+
+
+      <% end %>
+    </div>
+  </div>
+</div>

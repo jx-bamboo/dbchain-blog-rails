@@ -1,0 +1,56 @@
+<div class="login">
+  <div class="container">
+    <div class="nav align-items-center text-center flex-column justify-content-center">
+      <div class="col-sm-6 col-lg-4">
+        <!-- <form action="" method="post" class="form form-control border-0 pt-5 pb-4 px-4 shadow-sm" style="border-radius: 1em;"> -->
+        <%= form_with(model: user, class: "form form-control border-0 pt-5 pb-4 px-4 shadow-sm") do |f| %>
+          <% if user.errors.any? %>
+            <div class="input-group mb-3">
+              <div id="error_explanation">
+                <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+                <ul>
+                  <% user.errors.each do |error| %>
+                    <li><%= error.full_message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          <% end %>
+          
+          <div class="input-group mb-3">
+            <span class="input-group-text border-0">+86</span>
+            <!-- <input type="text" class="form-control form-control-lg phone login-input border-0" placeholder="13800000000" aria-label="phone" aria-describedby="basic-addon1"> -->
+            <%= f.text_field :phone_number, class: "form-control form-control-lg phone login-input border-0", placeholder: "13800000000",required: 'required' %>
+          </div>
+
+          <div class="input-group mb-3">
+            <%= rucaptcha_input_tag(id:'pcode', class: 'form-control form-control-lg code login-input border-0', placeholder: '图形验证码') %>
+            <%= rucaptcha_image_tag(alt: 'Captcha', width: '100em') %>
+          </div>
+
+          <div class="input-group mb-3">
+            <input type="text" name="smscode" class="form-control form-control-lg code login-input border-0" placeholder="短信验证码" required>
+            <span class="input-group-text border-0" id="smsbtn">发送验证码</span>
+          </div>
+
+          <div class="input-group mb-3">
+            <%= f.password_field :password, class: "form-control form-control-lg code login-input border-0", placeholder: "******",required: 'required' %>
+          </div>
+
+          <div class="input-group mb-3">
+            <%= f.password_field :password_confirmation, class: "form-control form-control-lg code login-input border-0", placeholder: "******",required: 'required' %>
+          </div>
+
+          <div class="input-group mb-3">
+            <%= f.submit "注册",class: "btn btn-lg btn-primary form-control shadow" %>
+          </div>
+
+          <div class="input-group mb-3 d-grid gap-2">
+            <!-- <a href="" class="btn btn-lg btn-outline-primary">登录</a> -->
+            <%= link_to '登录', login_path, class: "btn btn-lg btn-outline-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

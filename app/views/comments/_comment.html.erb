@@ -1,0 +1,18 @@
+<%# @article.comments.each do |comment| %>
+    <div class="card shadow-sm border-0 mb-3" style="border-radius: 1em;">
+        <div class="row g-0">
+            <div class="col-sm-2 text-center card-body">
+                <%= image_tag User.find_by(id: comment.user_id).try(:avatar) || "avatar.png", width: "50em" , height: "50em" , class: "rounded-circle" %>
+            </div>
+            <div class="col-sm-10">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <%= User.find_by(id: comment.user_id).try(:nickname) || "NICKNAME" %>
+                    </h5>
+                    <p class="card-text"><%= comment.content %></p>
+                    <p class="card-text"><small class="text-muted"><%= comment.created_at %></small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+<%# end %>

@@ -1,0 +1,59 @@
+<%= render 'layouts/header' %>
+<%= render 'articles/menu' %>
+<div class="container">
+	<div class="nav align-items-center text-center flex-column justify-content-center">
+		<div class="col-sm-6 col-lg-4">
+			<form action="" method="post" class="form form-control border-0 pt-5 pb-4 px-4 shadow-sm" style="border-radius: 1em;">
+				<div class="mb-5 position-relative text-center">
+					<!-- <img src="img/file.png" width="90" height="90" class="rounded-circle" id="preview" alt="avatar" title="avatar" /> -->
+          <%= image_tag 'avatar', width: '90', height: '90',class: 'rounded-circle', id: 'preview', alt: 'avatar', title: 'avatar' %>
+          <input type="file" accept="image/*" name="file" id="file" required />
+				</div>
+				<div class="input-group mb-3">
+				  <span class="input-group-text border-0" id="basic-addon1">昵称</span>
+				  <input type="text" class="form-control form-control-lg phone login-input border-0" placeholder="NICKNAME" aria-label="phone" aria-describedby="basic-addon1">
+				</div>
+				<div class="input-group mb-3">
+				  <span class="input-group-text border-0" id="basic-addon1">性别</span>
+				  <input type="text" class="form-control form-control-lg phone login-input border-0" placeholder="男/女" aria-label="phone" aria-describedby="basic-addon1">
+				</div>
+				<div class="input-group mb-3">
+				  <span class="input-group-text border-0" id="basic-addon1">年龄</span>
+				  <input type="text" class="form-control form-control-lg phone login-input border-0" placeholder="0" aria-label="phone" aria-describedby="basic-addon1">
+				</div>
+				<div class="input-group mb-3">
+				  <span class="input-group-text border-0" id="basic-addon1">简介</span>
+					<textarea rows="" cols="" class="form-control form-control-lg phone login-input border-0" placeholder="区块链博客真棒" ></textarea>
+				</div>
+				<div class="pt-4 pb-3 text-center" >
+				  <input type="submit" class="btn  btn-primary shadow px-5 py-3 rounded-pill" value="更新" />
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<script>
+	var fileDom = document.getElementById("file");
+	var previewDom = document.getElementById("preview");
+	fileDom.addEventListener("change", e => {
+		var file = fileDom.files[0];
+		if (!file || file.type.indexOf("image/") < 0) {
+			fileDom.value = "";
+			previewDom.src = "";
+			return;
+		}
+		var fileReader = new FileReader();
+		fileReader.onload = e => {
+			previewDom.src = e.target.result;
+		};
+		fileReader.readAsDataURL(file);
+	});
+	var formDom = document.getElementById("form");
+	function check() {
+		var file = fileDom.files[0];
+		if (!file || file.type.indexOf("image/") < 0) {
+			return false;
+		}
+		return true;
+	}
+</script>

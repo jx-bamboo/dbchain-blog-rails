@@ -1,0 +1,29 @@
+<!-- <%#= form_with(model: comment) do |form| %>
+  <%# if comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%#= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+        <%# comment.errors.each do |error| %>
+          <li><%#= error.full_message %></li>
+        <%# end %>
+      </ul>
+    </div>
+  <%# end %>
+
+  <div class="actions">
+    <%#= form.submit %>
+  </div>
+<%# end %> -->
+<%= form_with model: [@article, @article.comments.build] do |form| %>
+  <div class="input-group input-group-lg mb-3 border-0" style="background: #EFEFEF;">
+    <!-- <input type="text" class="form-control" placeholder="发表你的看法" aria-label="发表你的看法" aria-describedby="button-addon2"> -->
+    <!-- <textarea id="search" class="form-control border-0" placeholder="发表你的看法" aria-label="发表你的看法" aria-describedby="button-addon2" required ></textarea> -->
+    <%= form.text_area :content, class: "form-control border-0", placeholder: "发表你的看法", 'aria-label': "发表你的看法", "aria-describedby": "button-addon2", required:"required"  %>
+    <% if current_user %>
+      <button class="btn btn-primary" type="submit" id="button-addon2">评论</button>
+    <% else %>
+      <%= link_to '评论', login_path, class: "btn btn-primary", id: 'button-addon2' %>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,32 @@
+<div class="container">
+  <!-- <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-3"> -->
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-between py-3 mb-3">
+        <a href="<%= root_path %>" target="_self" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+            <%= image_tag "bloglogo.png", width: "200" %>
+        </a>
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 bg-primary">
+            <!-- <input type="search" class="form-control" placeholder="Search..." aria-label="Search"> -->
+        </form>
+        <div class="text-end">
+          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <!-- <ul class="nav navbar-nav navbar-right cred"> -->
+            <% if current_user %>
+              <li><%= link_to '登出',sign_out_path, method: :delete, class: "nav-link link-dark text-decoration-none" %></li>
+              <li class="nav-item">
+                <a class="d-block link-dark text-decoration-none">
+                    <span class="fw-bold me-2"><%= current_user[:nickname] || 'NICKNAME' if current_user %></span>
+                    <%= image_tag current_user[:avatar] || "avatar", width: "44", height: "44", class: "rounded-circle" %>
+                </a>
+              </li>
+            <% else %>
+              <li><a href="<%= login_path %>" class="nav-link px-2 link-secondary">登录</a></li>
+              <li>
+                <a href="#" target="_self" class="d-block link-dark text-decoration-none">
+                    <%= image_tag "avatar", width: "44", height: "44", class: "rounded-circle" %>
+                </a>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+    </div>
+</div>

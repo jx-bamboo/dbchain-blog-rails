@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="d-flex flex-wrap justify-content-md-between">
+        <nav class="nav fs-4">
+            <a href="/" class="nav-link active ps-0 text-dark fw-bold" aria-current="page" href="#">全部</a>
+            <!-- <a href="/?comment=c" class="nav-link text-dark" href="#">评价最多</a> -->
+            <a href="/?view=v" class="nav-link text-dark" href="#">访问最多</a>
+            <% if current_user %>
+              <a class="nav-link text-dark" href="#">我的博客</a>
+              <a href="<%= info_path %>" class="nav-link text-dark" href="#">我的信息</a>
+            <% end %>
+        </nav>
+        <form action="/" method="get" class="col-12 col-lg-auto mb-3 mb-lg-0">
+            <div class="input-group h-100">
+                <input type="text" class="form-control border-0 " name="search" id="search" placeholder="搜索热点" aria-describedby="basic-addon2">
+                <!-- <span class="input-group-text border-0" id="basic-addon2"><%#= image_tag "search.png", width: "24" %></span> -->
+                <button type="submit" class="input-group-text border-0" id="basic-addon2"><%= image_tag "search.png", width: "24" %></button>
+                <!-- <input class="input-group-text bg-light border-0 cred px-3" id="basic-addon2" type="submit" id="" name="" value="" /> -->
+            </div>
+        </form>
+    </div>
+</div>

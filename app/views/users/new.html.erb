@@ -1,0 +1,41 @@
+<%= render 'layouts/header' %>
+<%= render 'form', user: @user %>
+<script>
+document.getElementById("smsbtn").addEventListener('click',sendCode);
+function sendCode(){
+  // document.getElementById("basic-addon2").innerHTML = Date.now();
+  var phone_number = document.getElementById("user_phone_number").value;
+  var pcode = document.getElementById("pcode").value;
+  console.log(phone_number+','+pcode);
+  if(phone_number == "" || phone_number == null || typeof phone_number == undefined || phone_number.length < 11){
+    alert("请输入电话号码");
+  }else if (pcode == "" || pcode == null || typeof pcode == undefined || pcode.length != 5) {
+    alert("请输入图形验证码");
+  }else{
+    console.log("** success **");
+    var xmlhttp;
+    if (window.XMLHttpRequest)
+    {
+      xmlhttp=new XMLHttpRequest();
+    } else {
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function()
+    {
+      if (xmlhttp.readyState==4 && xmlhttp.status==200)
+      {
+        let mydata = xmlhttp.responseText;
+        console.log(mydata);
+        if(mydata=="ok"){
+          document.getElementById("smsbtn").value = "已发送";
+        }else{
+          alert(mydata);
+        }
+      }
+    }
+    xmlhttp.open("get","<%= sms_path %>?phone="+phone_number+"&&_rucaptcha="+pcode+"&&t="+Math.random(),true);
+    // xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xmlhttp.send();
+  }
+}
+</script>
